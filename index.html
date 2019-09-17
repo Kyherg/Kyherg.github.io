@@ -193,7 +193,7 @@
   
   
   <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/16/Maths/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/17/Sticks/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="kk_000">
@@ -207,7 +207,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
             
-            <a href="/2019/09/16/Maths/" class="post-title-link" itemprop="url">Math</a>
+            <a href="/2019/09/17/Sticks/" class="post-title-link" itemprop="url">Sticks</a>
           
         </h1>
 
@@ -222,7 +222,7 @@
                 
               
 
-              <time title="Created: 2019-09-16 23:28:54 / Modified: 23:34:03" itemprop="dateCreated datePublished" datetime="2019-09-16T23:28:54+08:00">2019-09-16</time>
+              <time title="Created: 2019-09-17 13:04:20 / Modified: 13:22:33" itemprop="dateCreated datePublished" datetime="2019-09-17T13:04:20+08:00">2019-09-17</time>
             </span>
           
             
@@ -241,10 +241,16 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="How-we-understand-math"><a href="#How-we-understand-math" class="headerlink" title="How we understand math?"></a>How we understand math?</h1><hr>
-<p>我认为，我们应该把每个数学问题先肢解，将它分成若干块，理解条件是最重要的。</p>
-<p>我们能否快速的找到推向问题根源的方法就取决于我们对于条件的理解到底是怎样的。</p>
-<p>date: 2019-09-16 23:28:54<br>categories: Mathematics</p>
+          <h1 id="对于圣经-上所讲Sticks的理解。"><a href="#对于圣经-上所讲Sticks的理解。" class="headerlink" title="对于圣经 上所讲Sticks的理解。"></a>对于<em>圣经</em> 上所讲Sticks的理解。</h1><h4 id="—-By-cuizhenkai"><a href="#—-By-cuizhenkai" class="headerlink" title="— By cuizhenkai"></a>— <em>By cuizhenkai</em></h4><h2 id="1-优化搜索顺序"><a href="#1-优化搜索顺序" class="headerlink" title="1.优化搜索顺序"></a>1.优化搜索顺序</h2><h4 id="从小到大排序，-优先尝试较长的木棍。"><a href="#从小到大排序，-优先尝试较长的木棍。" class="headerlink" title="从小到大排序， 优先尝试较长的木棍。"></a><em>从小到大排序， 优先尝试较长的木棍。</em></h4><h4 id="理解"><a href="#理解" class="headerlink" title="理解:"></a>理解:</h4><ul>
+<li>从最大开始可以较快的排除不可能的分支，避免<code>dfs</code>进入比较深的树。</li>
+<li>若从最小开始，则有可能前几根可以拼好，但是后面的不能满足条件，让<code>dfs</code>进入了更深的层。</li>
+</ul>
+<h2 id="2-排除等效冗余"><a href="#2-排除等效冗余" class="headerlink" title="2. 排除等效冗余"></a>2. 排除等效冗余</h2><h4 id="A-限制先后加入一根原始木棒的长度递减。"><a href="#A-限制先后加入一根原始木棒的长度递减。" class="headerlink" title="A )  限制先后加入一根原始木棒的长度递减。"></a><em>A )  限制先后加入一根原始木棒的长度递减</em>。</h4><h4 id="理解-1"><a href="#理解-1" class="headerlink" title="理解:"></a>理解:</h4><ul>
+<li>先拼长度为 $x$，再拼为 $y$的木棍 $(x &lt; y)$ 与反之是等效的。</li>
+</ul>
+<hr>
+<h3 id="还没更完。"><a href="#还没更完。" class="headerlink" title="还没更完。"></a>还没更完。</h3><hr>
+<p>date: 2019-09-17 13:04:20<br>categories: Algorithms Learning</p>
 
         
       
