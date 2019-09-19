@@ -55,31 +55,32 @@
   };
 </script>
 
-  <meta name="description" content="A site for myself to share.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="kk_000&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="对于 圣经 上Running Median的理解–By cuizhenkai动态维护中位数。对于特殊的输出格式，我们就不在这里做任何分析了。// 其实是偷懒 这道题目在 圣经 中是这样说的  建立两个二叉堆，一个小根堆，一个大根堆。设有$M$个数，则前$M/2$个数存储到大根堆，后面的存到小根堆。  理解： 按照这种方式就可以将中位数维持在堆顶上，但是还需要更新mid的值来进行判断。  实现上的错">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Running Median">
+<meta property="og:url" content="http://yoursite.com/2019/09/18/Running-Median/index.html">
 <meta property="og:site_name" content="kk_000&#39;s Blog">
-<meta property="og:description" content="A site for myself to share.">
+<meta property="og:description" content="对于 圣经 上Running Median的理解–By cuizhenkai动态维护中位数。对于特殊的输出格式，我们就不在这里做任何分析了。// 其实是偷懒 这道题目在 圣经 中是这样说的  建立两个二叉堆，一个小根堆，一个大根堆。设有$M$个数，则前$M/2$个数存储到大根堆，后面的存到小根堆。  理解： 按照这种方式就可以将中位数维持在堆顶上，但是还需要更新mid的值来进行判断。  实现上的错">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-09-19T05:26:44.781Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="kk_000&#39;s Blog">
-<meta name="twitter:description" content="A site for myself to share.">
-  <link rel="canonical" href="http://yoursite.com/">
+<meta name="twitter:title" content="Running Median">
+<meta name="twitter:description" content="对于 圣经 上Running Median的理解–By cuizhenkai动态维护中位数。对于特殊的输出格式，我们就不在这里做任何分析了。// 其实是偷懒 这道题目在 圣经 中是这样说的  建立两个二叉堆，一个小根堆，一个大根堆。设有$M$个数，则前$M/2$个数存储到大根堆，后面的存到小根堆。  理解： 按照这种方式就可以将中位数维持在堆顶上，但是还需要更新mid的值来进行判断。  实现上的错">
+  <link rel="canonical" href="http://yoursite.com/2019/09/18/Running-Median/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome: true,
-    isPost: false,
+    isHome: false,
+    isPost: true,
     isPage: false,
     isArchive: false
   };
 </script>
 
-  <title>kk_000's Blog</title>
+  <title>Running Median | kk_000's Blog</title>
   
 
 
@@ -187,12 +188,13 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
+
   <div id="posts" class="posts-expand">
-        <article itemscope itemtype="http://schema.org/Article">
+      <article itemscope itemtype="http://schema.org/Article">
   
   
   
-  <div class="post-block home">
+  <div class="post-block post">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/18/Running-Median/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -205,9 +207,8 @@
       <meta itemprop="name" content="kk_000's Blog">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2019/09/18/Running-Median/" class="post-title-link" itemprop="url">Running Median</a>
+        <h1 class="post-title" itemprop="name headline">Running Median
+
           
         </h1>
 
@@ -249,7 +250,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="对于-圣经-上Running-Median的理解"><a href="#对于-圣经-上Running-Median的理解" class="headerlink" title="对于 圣经 上Running Median的理解"></a>对于 <em>圣经</em> 上Running Median的理解</h1><h4 id="–By-cuizhenkai"><a href="#–By-cuizhenkai" class="headerlink" title="–By cuizhenkai"></a>–By cuizhenkai</h4><h5 id="动态维护中位数。"><a href="#动态维护中位数。" class="headerlink" title="动态维护中位数。"></a>动态维护中位数。</h5><p>对于特殊的输出格式，我们就不在这里做任何分析了。// 其实是偷懒</p>
+        <h1 id="对于-圣经-上Running-Median的理解"><a href="#对于-圣经-上Running-Median的理解" class="headerlink" title="对于 圣经 上Running Median的理解"></a>对于 <em>圣经</em> 上Running Median的理解</h1><h4 id="–By-cuizhenkai"><a href="#–By-cuizhenkai" class="headerlink" title="–By cuizhenkai"></a>–By cuizhenkai</h4><h5 id="动态维护中位数。"><a href="#动态维护中位数。" class="headerlink" title="动态维护中位数。"></a>动态维护中位数。</h5><p>对于特殊的输出格式，我们就不在这里做任何分析了。// 其实是偷懒</p>
 <p>这道题目在 <strong>圣经</strong> 中是这样说的</p>
 <blockquote>
 <p>建立两个二叉堆，一个小根堆，一个大根堆。设有$M$个数，则前$M/2$个数存储到大根堆，后面的存到小根堆。</p>
@@ -268,192 +269,43 @@
 <p>date: 2019-09-18 13:23:47</p>
 <p>categories:Algorithms Learning</p>
 
-        
-      
     </div>
 
     
     
     
+        
+      
+
       <footer class="post-footer">
-          <div class="post-eof"></div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2019/09/17/Sticks/" rel="next" title="Sticks">
+                  <i class="fa fa-chevron-left"></i> Sticks
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+          </div>
         
       </footer>
+    
   </div>
   
   
   
   </article>
 
-    
-        <article itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/17/Sticks/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="kk_000">
-      <meta itemprop="description" content="A site for myself to share.">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="kk_000's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2019/09/17/Sticks/" class="post-title-link" itemprop="url">Sticks</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              
-                
-              
-
-              <time title="Created: 2019-09-17 13:04:20" itemprop="dateCreated datePublished" datetime="2019-09-17T13:04:20+08:00">2019-09-17</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-09-19 13:26:53" itemprop="dateModified" datetime="2019-09-19T13:26:53+08:00">2019-09-19</time>
-              </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="对于圣经-上所讲Sticks的理解。"><a href="#对于圣经-上所讲Sticks的理解。" class="headerlink" title="对于圣经 上所讲Sticks的理解。"></a>对于<em>圣经</em> 上所讲Sticks的理解。</h1><h4 id="—-By-cuizhenkai"><a href="#—-By-cuizhenkai" class="headerlink" title="— By cuizhenkai"></a>— <em>By cuizhenkai</em></h4><h2 id="1-优化搜索顺序"><a href="#1-优化搜索顺序" class="headerlink" title="1.优化搜索顺序"></a>1.优化搜索顺序</h2><h4 id="从小到大排序，-优先尝试较长的木棍。"><a href="#从小到大排序，-优先尝试较长的木棍。" class="headerlink" title="从小到大排序， 优先尝试较长的木棍。"></a><em>从小到大排序， 优先尝试较长的木棍。</em></h4><h4 id="理解"><a href="#理解" class="headerlink" title="理解:"></a>理解:</h4><ul>
-<li>从最大开始可以较快的排除不可能的分支，避免<code>dfs</code>进入比较深的树。</li>
-<li>若从最小开始，则有可能前几根可以拼好，但是后面的不能满足条件，让<code>dfs</code>进入了更深的层。</li>
-</ul>
-<h2 id="2-排除等效冗余"><a href="#2-排除等效冗余" class="headerlink" title="2. 排除等效冗余"></a>2. 排除等效冗余</h2><h4 id="A-限制先后加入一根原始木棒的长度递减。"><a href="#A-限制先后加入一根原始木棒的长度递减。" class="headerlink" title="A )  限制先后加入一根原始木棒的长度递减。"></a><em>A )  限制先后加入一根原始木棒的长度递减</em>。</h4><h4 id="理解-1"><a href="#理解-1" class="headerlink" title="理解:"></a>理解:</h4><ul>
-<li>先拼长度为 $x$，再拼为 $y$的木棍 $(x &lt; y)$ 与反之是等效的。</li>
-</ul>
-<hr>
-<h3 id="还没更完。"><a href="#还没更完。" class="headerlink" title="还没更完。"></a>还没更完。</h3><hr>
-<p>date: 2019-09-17 13:04:20</p>
-<p>categories: Algorithms Learning</p>
-
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
   </div>
-  
-  
-  
-  </article>
-
-    
-        <article itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/13/My first blog/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="kk_000">
-      <meta itemprop="description" content="A site for myself to share.">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="kk_000's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2019/09/13/My first blog/" class="post-title-link" itemprop="url">The first blog</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              
-                
-              
-
-              <time title="Created: 2019-09-13 23:10:22 / Modified: 23:25:10" itemprop="dateCreated datePublished" datetime="2019-09-13T23:10:22+08:00">2019-09-13</time>
-            </span>
-          
-            
-
-            
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="This-is-the-first-blog-of-mine"><a href="#This-is-the-first-blog-of-mine" class="headerlink" title="This is the first blog of mine."></a>This is the first blog of mine.</h1><hr>
-<p>categories: First<br>date: 2019-09-13 23:10:22</p>
-
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
-  </div>
-
-  
 
 
           </div>
@@ -472,6 +324,11 @@
 
   <aside class="sidebar">
     <div class="sidebar-inner">
+        
+        
+        
+        
+      
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
@@ -484,6 +341,8 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#对于-圣经-上Running-Median的理解"><span class="nav-number">1.</span> <span class="nav-text">对于 圣经 上Running Median的理解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#–By-cuizhenkai"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">–By cuizhenkai</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#动态维护中位数。"><span class="nav-number">1.0.0.1.1.</span> <span class="nav-text">动态维护中位数。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#理解："><span class="nav-number">1.0.1.</span> <span class="nav-text">理解：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现上的错误"><span class="nav-number">1.0.2.</span> <span class="nav-text">实现上的错误 :</span></a></li></ol></li></ol></li></ol></div>
+        
       </div>
       <!--/noindex-->
 
@@ -585,14 +444,6 @@
 
   
 
-  
-    
-      
-    
-      
-    
-      
-    
   
 
   
