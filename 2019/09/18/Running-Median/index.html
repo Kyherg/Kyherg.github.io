@@ -63,7 +63,7 @@
 <meta property="og:site_name" content="kk_000&#39;s Blog">
 <meta property="og:description" content="对于 圣经 上Running Median的理解–By cuizhenkai动态维护中位数。对于特殊的输出格式，我们就不在这里做任何分析了。// 其实是偷懒 这道题目在 圣经 中是这样说的  建立两个二叉堆，一个小根堆，一个大根堆。设有$M$个数，则前$M/2$个数存储到大根堆，后面的存到小根堆。  理解： 按照这种方式就可以将中位数维持在堆顶上，但是还需要更新mid的值来进行判断。  实现上的错">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-20T05:31:35.724Z">
+<meta property="og:updated_time" content="2019-09-20T15:51:24.446Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Running Median">
 <meta name="twitter:description" content="对于 圣经 上Running Median的理解–By cuizhenkai动态维护中位数。对于特殊的输出格式，我们就不在这里做任何分析了。// 其实是偷懒 这道题目在 圣经 中是这样说的  建立两个二叉堆，一个小根堆，一个大根堆。设有$M$个数，则前$M/2$个数存储到大根堆，后面的存到小根堆。  理解： 按照这种方式就可以将中位数维持在堆顶上，但是还需要更新mid的值来进行判断。  实现上的错">
@@ -236,7 +236,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-09-20 13:31:35" itemprop="dateModified" datetime="2019-09-20T13:31:35+08:00">2019-09-20</time>
+                <time title="Modified: 2019-09-20 23:51:24" itemprop="dateModified" datetime="2019-09-20T23:51:24+08:00">2019-09-20</time>
               </span>
             
           
@@ -461,6 +461,56 @@
 
   
 
+  
+    
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
   
 
   
