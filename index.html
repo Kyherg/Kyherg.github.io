@@ -194,6 +194,198 @@
   
   
   <div class="post-block home">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/25/Sunscreen/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="kk_000">
+      <meta itemprop="description" content="A site for myself to share.">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="kk_000's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2019/09/25/Sunscreen/" class="post-title-link" itemprop="url">Sunscreen</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2019-09-25 12:44:09 / Modified: 13:12:28" itemprop="dateCreated datePublished" datetime="2019-09-25T12:44:09+08:00">2019-09-25</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="贪心"><a href="#贪心" class="headerlink" title="贪心"></a>贪心</h1><blockquote>
+<p><em>按照 $minspf$​ 递减的顺序把每头牛排序，然后依次考虑每头奶牛。</em><br><em>对于每头奶牛可以选择的防晒霜中，找 $spf$ 最大的。</em></p>
+</blockquote>
+<p>这是因为对于任意的两瓶防晒霜 $x$ 与 $y$ ($x &lt; y$)，对后面的奶牛只有这些情况。</p>
+<table>
+<thead>
+<tr>
+<th align="center">$x$</th>
+<th align="center">$y$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">能用</td>
+<td align="center">能用</td>
+</tr>
+<tr>
+<td align="center">能用</td>
+<td align="center">不能用</td>
+</tr>
+<tr>
+<td align="center">不能用</td>
+<td align="center">不能用</td>
+</tr>
+</tbody></table>
+<p>$p.s:$ 这些都是可用的防晒霜，所以 $minspf &lt; x &lt; y$，所以不会出现 $x$ 能用而 $y$ 不能用的情况。</p>
+<p>这样就能一目了然为什么要先选择 $spf$ 较大的防晒霜了。<br>就算是这头奶牛没有日光浴，其他奶牛仍然可以使用这瓶防晒霜。</p>
+<p>###Code：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">IO</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">template</span> &lt; <span class="keyword">typename</span> T &gt; <span class="keyword">inline</span> IO <span class="keyword">operator</span> &gt;&gt; (T &amp;n)</span><br><span class="line">	&#123;</span><br><span class="line">		n = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">char</span> c = getchar();</span><br><span class="line">		<span class="keyword">while</span>(c &lt; <span class="string">'0'</span> || c &gt; <span class="string">'9'</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			c = getchar();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">while</span>(c &gt;= <span class="string">'0'</span> &amp;&amp; c &lt;= <span class="string">'9'</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			n = (n &lt;&lt; <span class="number">3</span>) + (n &lt;&lt; <span class="number">1</span>) + (c ^ <span class="number">48</span>);</span><br><span class="line">			c = getchar();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;	<span class="built_in">cin</span>;<span class="comment">//某机房大佬的快读。</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> c = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> l = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">priority_queue &lt; <span class="keyword">int</span>, <span class="built_in">vector</span> &lt; <span class="keyword">int</span> &gt;, greater &lt; <span class="keyword">int</span> &gt;  &gt; q;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">COW</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> minspf;</span><br><span class="line">	<span class="keyword">int</span> maxspf;</span><br><span class="line">&#125;	cow[<span class="number">2505</span>];</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">LOT</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> spf;</span><br><span class="line">	<span class="keyword">int</span> tot;</span><br><span class="line">&#125;	lot[<span class="number">2505</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp1</span><span class="params">(COW a, COW b)</span></span>&#123;<span class="keyword">return</span> (a.minspf &lt; b.minspf);&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp2</span><span class="params">(LOT a, LOT b)</span></span>&#123;<span class="keyword">return</span> a.spf &lt; b.spf;&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">work</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> id = <span class="number">1</span>;</span><br><span class="line">	sort(cow + <span class="number">1</span>, cow + c + <span class="number">1</span>, cmp1);</span><br><span class="line">	sort(lot + <span class="number">1</span>, lot + l + <span class="number">1</span>, cmp2);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= l; i ++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">while</span>((id &lt;= c) &amp;&amp; cow[id].minspf &lt;= lot[i].spf)<span class="comment">//把minspf小于防晒霜spf的奶牛的second压入小根堆（负号）</span></span><br><span class="line">		&#123;<span class="comment">//这样做就可以把可能用该防晒霜的奶牛加入。</span></span><br><span class="line">			q.push(cow[id ++].maxspf);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">while</span>((!q.empty()) &amp;&amp; (q.top() &lt; lot[i].spf)) &#123;q.pop();&#125;<span class="comment">//开始对奶牛进行筛选，对于不满足的弹出</span></span><br><span class="line">		<span class="keyword">while</span>(!q.empty() &amp;&amp; (lot[i].tot --))<span class="comment">//这个防晒霜对于堆顶是合适的，对于这些奶牛，这个防晒霜就是能满足的spf最大的。</span></span><br><span class="line">		&#123;</span><br><span class="line">				ans ++;</span><br><span class="line">				q.pop();<span class="comment">//该奶牛已经处理完了，应该弹出。</span></span><br><span class="line">		&#125;<span class="comment">//这里是while是因为我们把minspf小于该防晒霜spf全部加入了堆，并且去除掉了不合法的，那么剩下的一定全部都能用这个防晒霜，且刚好满足，原因是因为若再向后移动一个奶牛，就会导致minspf大于该防晒霜的spf。</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ans;	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; c &gt;&gt; l;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= c; i ++) &#123;<span class="built_in">cin</span> &gt;&gt; cow[i].minspf &gt;&gt; cow[i].maxspf;&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= l; i ++) &#123;<span class="built_in">cin</span> &gt;&gt; lot[i].spf &gt;&gt; lot[i].tot;&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d"</span>, work());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="——-摘自圣经"><a href="#——-摘自圣经" class="headerlink" title="—— 摘自圣经"></a>—— <em>摘自圣经</em></h3><h3 id="理解："><a href="#理解：" class="headerlink" title="理解："></a>理解：</h3><p>注释之中。</p>
+
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+        <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block home">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/22/LaTeX-Learning/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="kk_000">
+      <meta itemprop="description" content="A site for myself to share.">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="kk_000's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2019/09/22/LaTeX-Learning/" class="post-title-link" itemprop="url">LaTeX Learning</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2019-09-22 13:01:07 / Modified: 13:02:18" itemprop="dateCreated datePublished" datetime="2019-09-22T13:01:07+08:00">2019-09-22</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="LaTeX学习笔记-–2019-8-18"><a href="#LaTeX学习笔记-–2019-8-18" class="headerlink" title="LaTeX学习笔记 –2019.8.18"></a>LaTeX学习笔记 –2019.8.18</h1><hr>
+<h2 id="偷懒直接在代码后接注释表明注意事项和用途"><a href="#偷懒直接在代码后接注释表明注意事项和用途" class="headerlink" title="偷懒直接在代码后接注释表明注意事项和用途"></a>偷懒直接在代码后接注释表明注意事项和用途</h2><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">\documentclass&#123;article&#125; %report, book, letter</span><br><span class="line">\title&#123;name&#125;</span><br><span class="line">\date&#123;date&#125;</span><br><span class="line">\author&#123;name&#125;</span><br><span class="line">\begin&#123;document&#125;</span><br><span class="line">	$数学公式$ %和文本在同一行</span><br><span class="line">	$$数学公式$$ %可以单行表示</span><br><span class="line">\end&#123;document&#125;</span><br></pre></td></tr></table></figure>
+
+<p>一个LaTeX源文件由正文区和导言区构成。</p>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">\documentclass[UTF-8]&#123;ctexart&#125; %可以用来处理中文</span><br><span class="line">\title&#123;\kaishu \today&#125; %在使用中文是可以指定字体(也许英文也行，但没讲)</span><br><span class="line">%or</span><br><span class="line">\documentclass[UTF-8]&#123;article&#125;</span><br><span class="line">\usepackage&#123;CTEX&#125;</span><br></pre></td></tr></table></figure>
+
+<p>处理中文要注意必须保证编码为UTF-8，并且加载ctex宏包</p>
+<hr>
+<p>LaTeX中有环境，让一些效果在局部生效，用法为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;&lt;environment name&gt;&#125;[&lt;optional arguments&gt;]&#123;mandatory arguments&#125;</span><br><span class="line">...</span><br><span class="line">\end&#123;&lt;environment name&gt;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>LaTeX提供分组的功能，<code>{ }</code> 一对为一组，在分组中的命令会被限制在组内生效。</p>
+<p>在document环境中的内容是文档正文。在<code>\documentclass</code> 和<code>\begin{document}</code> 之间的位置称为_导言区_，在LaTeX的开头必须指定文档类</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\documentclass[⟨options⟩]&#123;⟨class-name⟩&#125;</span><br></pre></td></tr></table></figure>
+
+<p><em>在lshort-zh 1.4.1结束</em></p>
+<h5 id="2019-8-18-14-51-——cuizhenkai"><a href="#2019-8-18-14-51-——cuizhenkai" class="headerlink" title="2019.8.18  14:51                                                                                                                                     ——cuizhenkai"></a>2019.8.18  14:51                                                                                                                                     <em>——cuizhenkai</em></h5>
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+        <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/18/Running-Median/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -510,7 +702,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">5</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -519,7 +711,7 @@
       
       <div class="site-state-item site-state-tags">
         
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">tags</span>
         
       </div>
@@ -611,6 +803,10 @@
     
       
         
+      
+    
+      
+    
       
     
       
