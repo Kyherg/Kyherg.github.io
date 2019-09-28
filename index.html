@@ -194,6 +194,171 @@
   
   
   <div class="post-block home">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/28/费解的开关/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="kk_000">
+      <meta itemprop="description" content="A site for myself to share.">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="kk_000's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2019/09/28/费解的开关/" class="post-title-link" itemprop="url">费解的开关</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2019-09-28 23:19:58 / Modified: 23:39:30" itemprop="dateCreated datePublished" datetime="2019-09-28T23:19:58+08:00">2019-09-28</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="很久以前就听过本题，到现在才做-（"><a href="#很久以前就听过本题，到现在才做-（" class="headerlink" title="很久以前就听过本题，到现在才做 （"></a>很久以前就听过本题，到现在才做 （</h1><h2 id="暴力思路："><a href="#暴力思路：" class="headerlink" title="暴力思路："></a>暴力思路：</h2><ul>
+<li>*<em>枚举每个灯泡是否按下 *</em></li>
+</ul>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析:"></a>分析:</h2><ul>
+<li>复杂度是 $2^{25}=33,554,432$，可以做，但是耗时较长</li>
+</ul>
+<h2 id="如何优化？"><a href="#如何优化？" class="headerlink" title="如何优化？"></a>如何优化？</h2><p><strong>我们观察到该阵列的一个性质：想要改变某一行的状态只有下一行会影响（假设我们锁定了这一行，业即我们枚举了这一行）</strong></p>
+<p>现在我们考虑我们能否通过某行状态推出下一行的状态？</p>
+<p>观察到若一行中的某个灯为零，那就只能按下面的灯了。</p>
+<p><strong>综上，由第一行能推出第二行，结合数学归纳法，我们就可以确定算法</strong></p>
+<ul>
+<li>枚举第一行</li>
+<li>通过第一行递推出第 $1-4$ 行。</li>
+<li>确定第五行是否能满足最终的条件。</li>
+<li>记录并保存最小操作数即可。</li>
+</ul>
+<h2 id="Code：-内有注释"><a href="#Code：-内有注释" class="headerlink" title="Code：(内有注释)"></a>Code：(内有注释)</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> <span class="built_in">map</span>[<span class="number">10</span>][<span class="number">10</span>];</span><br><span class="line"><span class="keyword">char</span> back[<span class="number">10</span>][<span class="number">10</span>];</span><br><span class="line"><span class="keyword">int</span> dx[] = &#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">-1</span>, <span class="number">0</span>, <span class="number">0</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> dy[] = &#123;<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">-1</span>, <span class="number">1</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">turn</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i ++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> newx = x + dx[i];</span><br><span class="line">		<span class="keyword">int</span> newy = y + dy[i];</span><br><span class="line">		<span class="keyword">if</span>(newx &gt;= <span class="number">0</span> &amp;&amp; newy &gt;= <span class="number">0</span> &amp;&amp; newx &lt; <span class="number">5</span> &amp;&amp; newy &lt; <span class="number">5</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">map</span>[newx][newy] ^= <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">calc</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> ans = <span class="number">999999</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">1</span> &lt;&lt; <span class="number">5</span>; i ++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> res = <span class="number">0</span>;		</span><br><span class="line">		<span class="built_in">memcpy</span>(back, <span class="built_in">map</span>, <span class="keyword">sizeof</span>(<span class="built_in">map</span>));</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">5</span>; j ++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>((i &gt;&gt; j &amp; <span class="number">1</span>))<span class="comment">//枚举哪一位上为一，就按下, 我们在枚举按下的方式。</span></span><br><span class="line">			&#123;</span><br><span class="line">				res ++;</span><br><span class="line">				turn(<span class="number">0</span>, j);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i ++)<span class="comment">//不是0-5是因为若我们递推最后一行，那么最后一行的下一行在哪呢?</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">5</span>; j ++)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span>(<span class="built_in">map</span>[i][j] == <span class="string">'0'</span>)</span><br><span class="line">				&#123;</span><br><span class="line">					res ++;</span><br><span class="line">					turn(i + <span class="number">1</span>, j);<span class="comment">//某个位置为零，按照规定，只能按下一行的按钮。</span></span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">bool</span> flag = <span class="literal">true</span>;<span class="comment">//判断是否能作为解来进行更新</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i ++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(<span class="built_in">map</span>[<span class="number">4</span>][i] == <span class="string">'0'</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				flag = <span class="literal">false</span>;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(flag) ans = min(ans, res);</span><br><span class="line">		<span class="built_in">memcpy</span>(<span class="built_in">map</span>, back, <span class="keyword">sizeof</span>(back));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(ans &gt; <span class="number">6</span>) ans = <span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> <span class="keyword">const</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> t = <span class="number">0</span>;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;t);</span><br><span class="line">	<span class="keyword">while</span>(t --)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i ++) &#123;<span class="built_in">cin</span> &gt;&gt; <span class="built_in">map</span>[i];&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, calc());</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><ul>
+<li>对于某些带有特殊操作的题，应考虑能否在状态与状态之间的影响上找到突破。</li>
+</ul>
+
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+        <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block home">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/28/Sumdiv/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="kk_000">
+      <meta itemprop="description" content="A site for myself to share.">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="kk_000's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2019/09/28/Sumdiv/" class="post-title-link" itemprop="url">Sumdiv</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2019-09-28 12:40:15 / Modified: 12:40:16" itemprop="dateCreated datePublished" datetime="2019-09-28T12:40:15+08:00">2019-09-28</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+        <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/25/Sunscreen/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -701,7 +866,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">7</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -802,6 +967,10 @@
     
       
         
+      
+    
+      
+    
       
     
       
