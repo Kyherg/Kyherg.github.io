@@ -11,9 +11,10 @@
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 3.9.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.0">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon_kk32.ico?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon_kk16.ico?v=7.4.0">
   <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#222">
+  <link rel="alternate" href="/atom.xml" title="kk_000's Blog" type="application/atom+xml">
 
 <link rel="stylesheet" href="/css/main.css?v=7.4.0">
 
@@ -55,17 +56,17 @@
   };
 </script>
 
-  <meta name="description" content="A site for myself to share.">
+  <meta name="description" content="kk_000&apos;s personal Blog.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="kk_000&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="http://kyherg.kk/index.html">
 <meta property="og:site_name" content="kk_000&#39;s Blog">
-<meta property="og:description" content="A site for myself to share.">
+<meta property="og:description" content="kk_000&apos;s personal Blog.">
 <meta property="og:locale" content="en">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="kk_000&#39;s Blog">
-<meta name="twitter:description" content="A site for myself to share.">
-  <link rel="canonical" href="http://yoursite.com/">
+<meta name="twitter:description" content="kk_000&apos;s personal Blog.">
+  <link rel="canonical" href="http://kyherg.kk/">
 
 
 <script id="page-configurations">
@@ -131,6 +132,8 @@
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
+        <p class="site-subtitle">Stay Hungry, Stay Foolish.</p>
+      
   </div>
 
   <div class="site-nav-toggle">
@@ -194,11 +197,11 @@
   
   
   <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/07/Segment-Tree/">
+    <link itemprop="mainEntityOfPage" href="http://kyherg.kk/LCA/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="kk_000">
-      <meta itemprop="description" content="A site for myself to share.">
+      <meta itemprop="description" content="kk_000's personal Blog.">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -208,7 +211,117 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
             
-            <a href="/2019/10/07/Segment-Tree/" class="post-title-link" itemprop="url">Segment Tree</a>
+            <a href="/LCA/" class="post-title-link" itemprop="url">LCA</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2019-10-12 00:38:12 / Modified: 23:33:33" itemprop="dateCreated datePublished" datetime="2019-10-12T00:38:12+08:00">2019-10-12</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="最近公共祖先（Least-Common-Ancestor）"><a href="#最近公共祖先（Least-Common-Ancestor）" class="headerlink" title="最近公共祖先（Least Common Ancestor）"></a>最近公共祖先（Least Common Ancestor）</h1><hr>
+<h2 id="什么是最近公共祖先"><a href="#什么是最近公共祖先" class="headerlink" title="什么是最近公共祖先"></a>什么是最近公共祖先</h2><blockquote>
+<p> 对于有根树 $T$ 的两个结点 $u、v$，最近公共祖先$LCA(T, u, v)$表示一个结点 $x$，满足 $x$ 是 $u$ 或 $v$ 的<strong>祖先</strong>且 $x$ 的深度尽可能大。<strong><em>——百度百科</em></strong></p>
+</blockquote>
+<h2 id="怎么求两点的最近公共祖先"><a href="#怎么求两点的最近公共祖先" class="headerlink" title="怎么求两点的最近公共祖先"></a>怎么求两点的最近公共祖先</h2><p>一般来说我们都是使用树上倍增的方法来求LCA，这种写法能在<strong>$O(log(n))$</strong>的速度下快速处理单次查询。总的时间复杂度就在$O(nlog(n))$</p>
+<p>变量的定义及其意义见下表</p>
+<table>
+<thead>
+<tr>
+<th align="center">变量</th>
+<th align="center">意义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>depth[i]</code></td>
+<td align="center">表示 $i$ 节点的深度</td>
+</tr>
+<tr>
+<td align="center"><code>fa[i][j]</code></td>
+<td align="center">表示 $i$ 节点的 $2 ^ j$ 级祖先</td>
+</tr>
+<tr>
+<td align="center"><code>lg[i]</code></td>
+<td align="center">以二为底的对数</td>
+</tr>
+<tr>
+<td align="center"><code>head[i]</code></td>
+<td align="center">前向星存树</td>
+</tr>
+</tbody></table>
+<h2 id="Code："><a href="#Code：" class="headerlink" title="Code："></a>Code：</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> m = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> s = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> depth[<span class="number">500005</span>];<span class="comment">//记录节点的深度</span></span><br><span class="line"><span class="keyword">int</span> fa[<span class="number">500005</span>][<span class="number">35</span>];</span><br><span class="line"><span class="keyword">int</span> lg[<span class="number">500005</span>];</span><br><span class="line"><span class="keyword">int</span> head[<span class="number">500005</span>];</span><br><span class="line"><span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line"><span class="comment">//从大向小跳，这样不会出现悔棋现象，原因是倒过来可以判断是否大于了要求，若大于可以很简单的跳过</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span>	&#123;</span></span><br><span class="line">	<span class="keyword">int</span> from;</span><br><span class="line">	<span class="keyword">int</span> to;</span><br><span class="line">	<span class="keyword">int</span> nxt;</span><br><span class="line">&#125;	e[<span class="number">2</span> * <span class="number">500005</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">addedge</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> v)</span>	</span>&#123;</span><br><span class="line">	e[++ cnt].nxt = head[u];</span><br><span class="line">	e[cnt].from = u;</span><br><span class="line">	e[cnt].to = v;</span><br><span class="line">	head[u] = cnt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> now, <span class="keyword">int</span> f)</span> </span>&#123;<span class="comment">//now是当前节点，f是now的父亲</span></span><br><span class="line">	depth[now] = depth[f] + <span class="number">1</span>;<span class="comment">//记录节点的深度，就是父亲节点的深度加一</span></span><br><span class="line">	fa[now][<span class="number">0</span>] = f;<span class="comment">//now节点，也就是当前的节点的2^0级祖先，也即父亲是f。</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; (<span class="number">1</span> &lt;&lt; i) &lt;= depth[now]; i ++) &#123;<span class="comment">//祖先的深的不可能小于0，所以有for中的判断</span></span><br><span class="line">		fa[now][i] = fa[fa[now][i - <span class="number">1</span>]][i - <span class="number">1</span>];<span class="comment">//now的2^i祖先是now的2^(i-1)级祖先的2^(i-1)级祖先</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = head[now]; i; i = e[i].nxt) &#123;<span class="comment">//向下更新now的儿子节点。</span></span><br><span class="line">		<span class="keyword">if</span>(e[i].to != f) &#123;<span class="comment">//所连的边不能为父亲，因为我们已经更新完了。//双向边，所以加这个特判</span></span><br><span class="line">			dfs(e[i].to, now);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lca</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;<span class="comment">//开始求两个节点之间的lca</span></span><br><span class="line">	<span class="keyword">if</span>(depth[x] &lt; depth[y]) swap(x ,y);<span class="comment">//设depth[x] &gt;= depth[y]</span></span><br><span class="line">	<span class="keyword">while</span>(depth[x] &gt; depth[y]) &#123;</span><br><span class="line">		x = fa[x][lg[depth[x] - depth[y]] - <span class="number">1</span>];<span class="comment">//将两个节点先跳到同一个深度，因为每次都要跳相同的深度，这样才有可能跳到x，y的lca</span></span><br><span class="line">	&#125;<span class="comment">//每次求高度*差*(这样就能控制跳的高度）的对数，而且都是向下取整，这样能保证不会跳过。</span></span><br><span class="line">	<span class="keyword">if</span>(x == y) &#123;<span class="comment">//如果y是x的祖先，那么他们的lca就是y</span></span><br><span class="line">		<span class="keyword">return</span> y;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = lg[depth[x]] - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i --) &#123;<span class="comment">//一块向上跳，每次修改x也可以做到和上面的while循环一样的效果。</span></span><br><span class="line">		<span class="keyword">if</span>(fa[x][i] != fa[y][i]) &#123;</span><br><span class="line">			x = fa[x][i];</span><br><span class="line">			y = fa[y][i];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> fa[x][<span class="number">0</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>, &amp;n, &amp;m, &amp;s);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n - <span class="number">1</span>; i ++) &#123;</span><br><span class="line">		<span class="keyword">int</span> u = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">int</span> v = <span class="number">0</span>;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;u, &amp;v);</span><br><span class="line">		addedge(u, v);</span><br><span class="line">		addedge(v, u);</span><br><span class="line">	&#125;</span><br><span class="line">	dfs(s, <span class="number">0</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i ++) &#123;</span><br><span class="line">		lg[i] = lg[i - <span class="number">1</span>] + ((<span class="number">1</span> &lt;&lt; lg[i - <span class="number">1</span>]) == i);<span class="comment">//保存了以二为底所有数的对数 + 1（向下取整</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i ++) &#123;</span><br><span class="line">		<span class="keyword">int</span> u = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">int</span> v = <span class="number">0</span>;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;u, &amp;v);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, lca(u, v));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="LCA的应用"><a href="#LCA的应用" class="headerlink" title="LCA的应用?"></a>LCA的应用?</h2><ul>
+<li>emm…其实我不是很清楚，因为我还没有做过<strong>LCA</strong>的题，因此不要问我！</li>
+</ul>
+<h2 id="如何用别的算法（非倍增-来求LCA"><a href="#如何用别的算法（非倍增-来求LCA" class="headerlink" title="如何用别的算法（非倍增 来求LCA"></a>如何用别的算法（非倍增 来求LCA</h2><ul>
+<li><strong>Tarjan</strong>大法好！</li>
+</ul>
+
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+        <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block home">
+    <link itemprop="mainEntityOfPage" href="http://kyherg.kk/Segment-Tree/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="kk_000">
+      <meta itemprop="description" content="kk_000's personal Blog.">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="kk_000's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/Segment-Tree/" class="post-title-link" itemprop="url">Segment Tree</a>
           
         </h1>
 
@@ -314,11 +427,11 @@
   
   
   <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/28/费解的开关/">
+    <link itemprop="mainEntityOfPage" href="http://kyherg.kk/费解的开关/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="kk_000">
-      <meta itemprop="description" content="A site for myself to share.">
+      <meta itemprop="description" content="kk_000's personal Blog.">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -328,7 +441,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
             
-            <a href="/2019/09/28/费解的开关/" class="post-title-link" itemprop="url">费解的开关</a>
+            <a href="/费解的开关/" class="post-title-link" itemprop="url">费解的开关</a>
           
         </h1>
 
@@ -408,11 +521,11 @@
   
   
   <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/28/Sumdiv/">
+    <link itemprop="mainEntityOfPage" href="http://kyherg.kk/Sunscreen/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="kk_000">
-      <meta itemprop="description" content="A site for myself to share.">
+      <meta itemprop="description" content="kk_000's personal Blog.">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -422,79 +535,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
             
-            <a href="/2019/09/28/Sumdiv/" class="post-title-link" itemprop="url">Sumdiv</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              
-                
-              
-
-              <time title="Created: 2019-09-28 12:40:15 / Modified: 12:40:16" itemprop="dateCreated datePublished" datetime="2019-09-28T12:40:15+08:00">2019-09-28</time>
-            </span>
-          
-            
-
-            
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
-        <article itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/25/Sunscreen/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="kk_000">
-      <meta itemprop="description" content="A site for myself to share.">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="kk_000's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2019/09/25/Sunscreen/" class="post-title-link" itemprop="url">Sunscreen</a>
+            <a href="/Sunscreen/" class="post-title-link" itemprop="url">Sunscreen</a>
           
         </h1>
 
@@ -581,11 +622,11 @@
   
   
   <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/22/LaTeX-Learning/">
+    <link itemprop="mainEntityOfPage" href="http://kyherg.kk/LaTeX-Learning/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="kk_000">
-      <meta itemprop="description" content="A site for myself to share.">
+      <meta itemprop="description" content="kk_000's personal Blog.">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -595,7 +636,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
             
-            <a href="/2019/09/22/LaTeX-Learning/" class="post-title-link" itemprop="url">LaTeX Learning</a>
+            <a href="/LaTeX-Learning/" class="post-title-link" itemprop="url">LaTeX Learning</a>
           
         </h1>
 
@@ -671,11 +712,11 @@
   
   
   <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/18/Running-Median/">
+    <link itemprop="mainEntityOfPage" href="http://kyherg.kk/Running-Median/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="kk_000">
-      <meta itemprop="description" content="A site for myself to share.">
+      <meta itemprop="description" content="kk_000's personal Blog.">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -685,7 +726,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
             
-            <a href="/2019/09/18/Running-Median/" class="post-title-link" itemprop="url">Running Median</a>
+            <a href="/Running-Median/" class="post-title-link" itemprop="url">Running Median</a>
           
         </h1>
 
@@ -766,11 +807,11 @@
   
   
   <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/17/Sticks/">
+    <link itemprop="mainEntityOfPage" href="http://kyherg.kk/Sticks/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="kk_000">
-      <meta itemprop="description" content="A site for myself to share.">
+      <meta itemprop="description" content="kk_000's personal Blog.">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -780,7 +821,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
             
-            <a href="/2019/09/17/Sticks/" class="post-title-link" itemprop="url">Sticks</a>
+            <a href="/Sticks/" class="post-title-link" itemprop="url">Sticks</a>
           
         </h1>
 
@@ -866,11 +907,11 @@
   
   
   <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/13/My first blog/">
+    <link itemprop="mainEntityOfPage" href="http://kyherg.kk/My first blog/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="kk_000">
-      <meta itemprop="description" content="A site for myself to share.">
+      <meta itemprop="description" content="kk_000's personal Blog.">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -880,7 +921,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
             
-            <a href="/2019/09/13/My first blog/" class="post-title-link" itemprop="url">The first blog</a>
+            <a href="/My first blog/" class="post-title-link" itemprop="url">The first blog</a>
           
         </h1>
 
@@ -980,7 +1021,7 @@
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
   <p class="site-author-name" itemprop="name">kk_000</p>
-  <div class="site-description" itemprop="description">A site for myself to share.</div>
+  <div class="site-description" itemprop="description">kk_000's personal Blog.</div>
 </div>
   <nav class="site-state motion-element">
       <div class="site-state-item site-state-posts">
@@ -1002,6 +1043,11 @@
       </div>
     
   </nav>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
 
 
 
