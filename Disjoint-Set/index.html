@@ -56,17 +56,19 @@
   };
 </script>
 
-  <meta name="description" content="kk_000&apos;s personal Blog.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="kk_000&#39;s Blog">
-<meta property="og:url" content="http://kyherg.kk/tags/Algorithms-Learning/index.html">
+  <meta name="description" content="Disjoint Set   并查集是一种树型的数据结构，用于处理一些不交集（Disjoint Sets）的合并及查询问题。                                                                        ——Wikipedia  一般来说，我们需要实现两种操作。 Find操作 这个操作是用来查找某一个元素的所在集合的代表值 同时可以通">
+<meta name="keywords" content="Algorithms Learning">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Disjoint Set">
+<meta property="og:url" content="http://kyherg.kk/Disjoint-Set/index.html">
 <meta property="og:site_name" content="kk_000&#39;s Blog">
-<meta property="og:description" content="kk_000&apos;s personal Blog.">
+<meta property="og:description" content="Disjoint Set   并查集是一种树型的数据结构，用于处理一些不交集（Disjoint Sets）的合并及查询问题。                                                                        ——Wikipedia  一般来说，我们需要实现两种操作。 Find操作 这个操作是用来查找某一个元素的所在集合的代表值 同时可以通">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-10-14T15:35:31.864Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="kk_000&#39;s Blog">
-<meta name="twitter:description" content="kk_000&apos;s personal Blog.">
-  <link rel="canonical" href="http://kyherg.kk/tags/Algorithms-Learning/">
+<meta name="twitter:title" content="Disjoint Set">
+<meta name="twitter:description" content="Disjoint Set   并查集是一种树型的数据结构，用于处理一些不交集（Disjoint Sets）的合并及查询问题。                                                                        ——Wikipedia  一般来说，我们需要实现两种操作。 Find操作 这个操作是用来查找某一个元素的所在集合的代表值 同时可以通">
+  <link rel="canonical" href="http://kyherg.kk/Disjoint-Set/">
 
 
 <script id="page-configurations">
@@ -74,13 +76,13 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false,
+    isPost: true,
     isPage: false,
     isArchive: false
   };
 </script>
 
-  <title>Tag: Algorithms Learning | kk_000's Blog</title>
+  <title>Disjoint Set | kk_000's Blog</title>
   
 
 
@@ -175,18 +177,6 @@
 
     
 
-    
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
 </nav>
 </div>
     </header>
@@ -204,234 +194,119 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+      <article itemscope itemtype="http://schema.org/Article">
   
   
   
-  <div class="post-block tag">
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1 class="collection-header">Algorithms Learning<small>Tag</small>
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="http://kyherg.kk/Disjoint-Set/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="kk_000">
+      <meta itemprop="description" content="kk_000's personal Blog.">
+      <meta itemprop="image" content="/images/avatar_kk.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="kk_000's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Disjoint Set
+
+          
         </h1>
-      </div>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2019-10-14 23:18:38 / Modified: 23:35:31" itemprop="dateCreated datePublished" datetime="2019-10-14T23:18:38+08:00">2019-10-14</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
+        <h1 id="Disjoint-Set"><a href="#Disjoint-Set" class="headerlink" title="Disjoint Set"></a>Disjoint Set</h1><blockquote>
+<p>  <strong>并查集</strong>是一种树型的数据结构，用于处理一些不交集（Disjoint Sets）的合并及查询问题。                                                                        ——Wikipedia</p>
+</blockquote>
+<p>一般来说，我们需要实现两种操作。</p>
+<h2 id="Find操作"><a href="#Find操作" class="headerlink" title="Find操作"></a>Find操作</h2><ul>
+<li>这个操作是用来查找某一个元素的所在集合的代表值</li>
+<li>同时可以通过代表制来判断两个元素是否在同一个集合内</li>
+</ul>
+<h3 id="实现："><a href="#实现：" class="headerlink" title="实现："></a>实现：</h3><ul>
+<li>一般来说，在实现的时候，因为我们仅仅关心<strong>两元素是否在一个集合内</strong>，而并不是它们两个<strong>具体的</strong>（混凝土 关系，因此我们可以直接将一个节点的父亲直接设定为这个集合的<strong>“大”</strong>祖先，这样并查集森林的深度就可以非常小，时间复杂度可以降到非常低</li>
+</ul>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code:"></a>Code:</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(f[x] == x) &#123;</span><br><span class="line">        <span class="keyword">return</span> f[x];</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> f[x] = find(f[x]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-  
-  
+<h2 id="——未完待续"><a href="#——未完待续" class="headerlink" title="——未完待续"></a>——未完待续</h2>
+    </div>
 
-  
     
-    <div class="collection-year">
-      <h1 class="collection-header">2019</h1>
-    </div>
-  
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
+    
+    
         
-          <a class="post-title-link" href="/Disjoint-Set/" itemprop="url">
-            <span itemprop="name">Disjoint Set</span>
-          </a>
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/Algorithms-Learning/" rel="tag"># Algorithms Learning</a>
+            
+          </div>
         
-      </h2>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-10-14T23:18:38+08:00"
-              content="2019-10-14">
-          10-14
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-  
-  
-
-  
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
         
-          <a class="post-title-link" href="/LCA/" itemprop="url">
-            <span itemprop="name">LCA</span>
-          </a>
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/LCA/" rel="next" title="LCA">
+                  <i class="fa fa-chevron-left"></i> LCA
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+          </div>
         
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-10-12T00:38:12+08:00"
-              content="2019-10-12">
-          10-12
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-  
-  
-
-  
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/Segment-Tree/" itemprop="url">
-            <span itemprop="name">Segment Tree</span>
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-10-07T22:02:02+08:00"
-              content="2019-10-07">
-          10-07
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-  
-  
-
-  
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/费解的开关/" itemprop="url">
-            <span itemprop="name">费解的开关</span>
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-09-28T23:19:58+08:00"
-              content="2019-09-28">
-          09-28
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-  
-  
-
-  
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/Sunscreen/" itemprop="url">
-            <span itemprop="name">Sunscreen</span>
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-09-25T12:44:09+08:00"
-              content="2019-09-25">
-          09-25
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-  
-  
-
-  
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/Running-Median/" itemprop="url">
-            <span itemprop="name">Running Median</span>
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-09-18T13:23:47+08:00"
-              content="2019-09-18">
-          09-18
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-  
-  
-
-  
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/Sticks/" itemprop="url">
-            <span itemprop="name">Sticks</span>
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-09-17T13:04:20+08:00"
-              content="2019-09-17">
-          09-17
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    </div>
+      </footer>
+    
   </div>
   
   
   
+  </article>
 
-  
-
+  </div>
 
 
           </div>
@@ -450,6 +325,11 @@
 
   <aside class="sidebar">
     <div class="sidebar-inner">
+        
+        
+        
+        
+      
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
@@ -462,6 +342,8 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Disjoint-Set"><span class="nav-number">1.</span> <span class="nav-text">Disjoint Set</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Find操作"><span class="nav-number">1.1.</span> <span class="nav-text">Find操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实现："><span class="nav-number">1.1.1.</span> <span class="nav-text">实现：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code"><span class="nav-number">1.1.2.</span> <span class="nav-text">Code:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#——未完待续"><span class="nav-number">1.2.</span> <span class="nav-text">——未完待续</span></a></li></ol></li></ol></div>
+        
       </div>
       <!--/noindex-->
 
@@ -580,6 +462,56 @@
 
   
 
+  
+    
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
   
 
   
