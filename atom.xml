@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kyherg.kk/"/>
-  <updated>2019-10-14T15:35:31.864Z</updated>
+  <updated>2019-10-16T15:38:11.392Z</updated>
   <id>http://kyherg.kk/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Maths</title>
+    <link href="http://kyherg.kk/Maths/"/>
+    <id>http://kyherg.kk/Maths/</id>
+    <published>2019-10-16T15:09:00.000Z</published>
+    <updated>2019-10-16T15:38:11.392Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Number-Theory"><a href="#Number-Theory" class="headerlink" title="Number Theory"></a><em>Number Theory</em></h1><hr><h2 id="质数"><a href="#质数" class="headerlink" title="质数"></a>质数</h2><ul><li>什么是质数（这小学就学过</li></ul><p>我们直接跳过这一块的的定义，直接来看怎么来快速判断一个数是否是素数（$O(\sqrt n)$）或者是快速求出素数表（$O(n)$）</p><h3 id="素数的判断"><a href="#素数的判断" class="headerlink" title="素数的判断"></a>素数的判断</h3><blockquote><p>若一个正整数 $N$ 是合数，那么 $\exist\ T\in \N^*, T \mid N (2\leqslant T\leqslant \sqrt N)$.</p><p><strong>——lyd</strong></p></blockquote><p>$$<br>证明：假设 \exist X,X\mid N,且\sqrt N + 1\leqslant X \leqslant N-1. \<br>    \because X\mid N,\<br>    \therefore \exist k, 使得N = k\cdot X(k\in \N^<em>),\<br>    \therefore k \mid N\in \N^</em>,\<br>    又 \because k = \frac{N}{X},\<br>    \therefore \frac{N}{X} \mid N,\<br>    \therefore \exist T = \frac{N}{X}\in [2,\sqrt N],T\mid  N,\<br>    \therefore 假设不成立，原命题成立\<br>    ——lyd<br>$$</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Number-Theory&quot;&gt;&lt;a href=&quot;#Number-Theory&quot; class=&quot;headerlink&quot; title=&quot;Number Theory&quot;&gt;&lt;/a&gt;&lt;em&gt;Number Theory&lt;/em&gt;&lt;/h1&gt;&lt;hr&gt;
+&lt;h2 id=&quot;质数&quot;&gt;&lt;a 
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Algorithms Learning" scheme="http://kyherg.kk/tags/Algorithms-Learning/"/>
+    
+  </entry>
   
   <entry>
     <title>Disjoint Set</title>
