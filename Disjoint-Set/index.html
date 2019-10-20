@@ -56,18 +56,18 @@
   };
 </script>
 
-  <meta name="description" content="Disjoint Set   并查集是一种树型的数据结构，用于处理一些不交集（Disjoint Sets）的合并及查询问题。                                                                        ——Wikipedia  一般来说，我们需要实现两种操作。 Find操作 这个操作是用来查找某一个元素的所在集合的代表值 同时可以通">
+  <meta name="description" content="Disjoint Set   并查集是一种树型的数据结构，用于处理一些不交集（Disjoint Sets）的合并及查询问题。                                                                        ——Wikipedia  实际上，并查集就是森林。 一般来说，我们需要实现两种操作。 Find操作 这个操作是用来查找某一个元素的所">
 <meta name="keywords" content="Algorithms Learning">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Disjoint Set">
 <meta property="og:url" content="http://kyherg.kk/Disjoint-Set/index.html">
 <meta property="og:site_name" content="kk_000&#39;s Blog">
-<meta property="og:description" content="Disjoint Set   并查集是一种树型的数据结构，用于处理一些不交集（Disjoint Sets）的合并及查询问题。                                                                        ——Wikipedia  一般来说，我们需要实现两种操作。 Find操作 这个操作是用来查找某一个元素的所在集合的代表值 同时可以通">
+<meta property="og:description" content="Disjoint Set   并查集是一种树型的数据结构，用于处理一些不交集（Disjoint Sets）的合并及查询问题。                                                                        ——Wikipedia  实际上，并查集就是森林。 一般来说，我们需要实现两种操作。 Find操作 这个操作是用来查找某一个元素的所">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-10-14T15:35:31.864Z">
+<meta property="og:updated_time" content="2019-10-20T05:23:10.716Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Disjoint Set">
-<meta name="twitter:description" content="Disjoint Set   并查集是一种树型的数据结构，用于处理一些不交集（Disjoint Sets）的合并及查询问题。                                                                        ——Wikipedia  一般来说，我们需要实现两种操作。 Find操作 这个操作是用来查找某一个元素的所在集合的代表值 同时可以通">
+<meta name="twitter:description" content="Disjoint Set   并查集是一种树型的数据结构，用于处理一些不交集（Disjoint Sets）的合并及查询问题。                                                                        ——Wikipedia  实际上，并查集就是森林。 一般来说，我们需要实现两种操作。 Find操作 这个操作是用来查找某一个元素的所">
   <link rel="canonical" href="http://kyherg.kk/Disjoint-Set/">
 
 
@@ -228,11 +228,19 @@
                 
               
 
-              <time title="Created: 2019-10-14 23:18:38 / Modified: 23:35:31" itemprop="dateCreated datePublished" datetime="2019-10-14T23:18:38+08:00">2019-10-14</time>
+              <time title="Created: 2019-10-14 23:18:38" itemprop="dateCreated datePublished" datetime="2019-10-14T23:18:38+08:00">2019-10-14</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-10-20 13:23:10" itemprop="dateModified" datetime="2019-10-20T13:23:10+08:00">2019-10-20</time>
+              </span>
             
           
 
@@ -250,6 +258,7 @@
         <h1 id="Disjoint-Set"><a href="#Disjoint-Set" class="headerlink" title="Disjoint Set"></a>Disjoint Set</h1><blockquote>
 <p>  <strong>并查集</strong>是一种树型的数据结构，用于处理一些不交集（Disjoint Sets）的合并及查询问题。                                                                        ——Wikipedia</p>
 </blockquote>
+<p><strong>实际上，并查集就是森林。</strong></p>
 <p>一般来说，我们需要实现两种操作。</p>
 <h2 id="Find操作"><a href="#Find操作" class="headerlink" title="Find操作"></a>Find操作</h2><ul>
 <li>这个操作是用来查找某一个元素的所在集合的代表值</li>
@@ -260,7 +269,16 @@
 </ul>
 <h3 id="Code"><a href="#Code" class="headerlink" title="Code:"></a>Code:</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(f[x] == x) &#123;</span><br><span class="line">        <span class="keyword">return</span> f[x];</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> f[x] = find(f[x]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="——未完待续"><a href="#——未完待续" class="headerlink" title="——未完待续"></a>——未完待续</h2>
+<h2 id="例题："><a href="#例题：" class="headerlink" title="例题："></a>例题：</h2><p>——摘自<em>《算法竞赛进阶指南》</em></p>
+<h3 id="程序自动分析"><a href="#程序自动分析" class="headerlink" title="程序自动分析"></a>程序自动分析</h3><ul>
+<li>要维护关系的集合，里面有两种关系：<strong>相等</strong>和<strong>不相等</strong></li>
+<li>我们可以用图的方式来进行维护，但是这样就会超时，该怎么办呢？</li>
+<li>这时我们可以用并查集来维护啊！</li>
+<li>因为相等的关系具有传递性，因此我们可以先用并查集维护相等的关系，在对不相等的关系进行判断，这样就能完美解决本题。</li>
+</ul>
+<p><strong>关键在于找到具有传递性的关系，这种关系可以通过并查集来进行维护</strong></p>
+<h2 id="“扩展域”与“边带权”的并查集"><a href="#“扩展域”与“边带权”的并查集" class="headerlink" title="“扩展域”与“边带权”的并查集"></a>“扩展域”与“边带权”的并查集</h2><p>——未完待续。</p>
+
     </div>
 
     
@@ -346,7 +364,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Disjoint-Set"><span class="nav-number">1.</span> <span class="nav-text">Disjoint Set</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Find操作"><span class="nav-number">1.1.</span> <span class="nav-text">Find操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实现："><span class="nav-number">1.1.1.</span> <span class="nav-text">实现：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code"><span class="nav-number">1.1.2.</span> <span class="nav-text">Code:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#——未完待续"><span class="nav-number">1.2.</span> <span class="nav-text">——未完待续</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Disjoint-Set"><span class="nav-number">1.</span> <span class="nav-text">Disjoint Set</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Find操作"><span class="nav-number">1.1.</span> <span class="nav-text">Find操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实现："><span class="nav-number">1.1.1.</span> <span class="nav-text">实现：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code"><span class="nav-number">1.1.2.</span> <span class="nav-text">Code:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例题："><span class="nav-number">1.2.</span> <span class="nav-text">例题：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#程序自动分析"><span class="nav-number">1.2.1.</span> <span class="nav-text">程序自动分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#“扩展域”与“边带权”的并查集"><span class="nav-number">1.3.</span> <span class="nav-text">“扩展域”与“边带权”的并查集</span></a></li></ol></li></ol></div>
         
       </div>
       <!--/noindex-->
