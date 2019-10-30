@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kyherg.kk/"/>
-  <updated>2019-10-23T05:20:23.957Z</updated>
+  <updated>2019-10-30T16:31:28.222Z</updated>
   <id>http://kyherg.kk/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>KMP</title>
+    <link href="http://kyherg.kk/KMP/"/>
+    <id>http://kyherg.kk/KMP/</id>
+    <published>2019-10-26T13:30:10.000Z</published>
+    <updated>2019-10-30T16:31:28.222Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="一个我看了好久才明白的算法"><a href="#一个我看了好久才明白的算法" class="headerlink" title="一个我看了好久才明白的算法"></a>一个我看了好久才明白的算法</h1><blockquote><p>KMP算法是由 D.E.Knuth，J.H.Morris和V.R.Pratt提出的，因此我们取三个人的首字母，作为这个算法的名称。</p></blockquote><h2 id="模式匹配？"><a href="#模式匹配？" class="headerlink" title="模式匹配？"></a>模式匹配？</h2><blockquote><p> 模式匹配是数据结构中字符串的一种基本运算，给定一个子串，要求在某个字符串中找出与该子串相同的所有子串，这就是模式匹配。<em>——百度百科</em></p></blockquote><p>为方便，以下设主串的长度为 $n$，令它为<code>text</code>，要匹配的串长度为$m$，令它为<code>pattern</code>。</p><h2 id="暴力做法："><a href="#暴力做法：" class="headerlink" title="暴力做法："></a>暴力做法：</h2><ul><li>将两个字符串一位一位的配对，当我们失配时，从主串（开始时的）的后一位继续从头匹配</li></ul><p>最坏复杂度：$O(nm)$，实际上对于随机情况下的匹配，这种方法是很快的，但是本算法最坏情况非常容易构造，因此这种做法并不是很好。</p><p><strong>怎么才能快速的匹配呢?</strong></p><p>然后，三位神犇（上文已经提了，发明了KMP算法来解决这个问题。</p><h2 id="KMP算法"><a href="#KMP算法" class="headerlink" title="KMP算法"></a>KMP算法</h2><hr><h3 id="1-预处理-nxt-数组"><a href="#1-预处理-nxt-数组" class="headerlink" title="1.预处理$nxt[\ ]$数组"></a>1.预处理$nxt[\ ]$数组</h3><ul><li>含义：$nxt[i]$ 表示在$pattern[0…i]$中的最长相等前后缀。<br>Sample：<code>abcabcd</code>中，$nxt[] = {0,0,1,2,3,0}$。</li><li>如何高效计算？<ul><li>两个指针，一个叫做 $i$，另一个叫做 $j$，我们令$i = 1,\ j = 0$，然后在循环中让 $i$ 每次有一个增量（<code>i ++</code>。</li><li>当 $j$ 与 $i$，不匹配时，我们需要更新 $j$，此时，我们之前计算出来的 $nxt[\ ]$ 就能派上用场了，由于 $nxt[i]$ 维护了区间前 $i$ 中最长的相等前缀后缀，因为他们相等，因此，我们下次在进行比对时，只需要</li></ul></li></ul><h3 id="2-开始匹配"><a href="#2-开始匹配" class="headerlink" title="2.开始匹配"></a>2.开始匹配</h3><ul><li></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;一个我看了好久才明白的算法&quot;&gt;&lt;a href=&quot;#一个我看了好久才明白的算法&quot; class=&quot;headerlink&quot; title=&quot;一个我看了好久才明白的算法&quot;&gt;&lt;/a&gt;一个我看了好久才明白的算法&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;KMP算法是由 D.E.K
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Algorithms Learning" scheme="http://kyherg.kk/tags/Algorithms-Learning/"/>
+    
+  </entry>
   
   <entry>
     <title>BigInteger</title>
@@ -28,31 +53,6 @@
     </summary>
     
     
-    
-  </entry>
-  
-  <entry>
-    <title>Maths</title>
-    <link href="http://kyherg.kk/Maths/"/>
-    <id>http://kyherg.kk/Maths/</id>
-    <published>2019-10-16T15:09:00.000Z</published>
-    <updated>2019-10-23T17:32:29.474Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Number-Theory"><a href="#Number-Theory" class="headerlink" title="Number Theory"></a><em>Number Theory</em></h1><hr><h2 id="质数"><a href="#质数" class="headerlink" title="质数"></a>质数</h2><ul><li>什么是质数（这小学就学过</li></ul><p>我们直接跳过这一块的的定义，直接来看怎么来快速判断一个数是否是素数（$O(\sqrt n)$）或者是快速求出素数表（$O(n)$）</p><h3 id="素数的判断"><a href="#素数的判断" class="headerlink" title="素数的判断"></a>素数的判断</h3><blockquote><p>若一个正整数 $N$ 是合数，那么 $\exist\ T\in \N^*, T \mid N (2\leqslant T\leqslant \sqrt N)$.</p><p><strong>——lyd</strong></p></blockquote><p>$$<br>证明：假设 \exist X,X\mid N,且\sqrt N + 1\leqslant X \leqslant N-1. \<br>    \because X\mid N,\<br>    \therefore \exist k, 使得N = k\cdot X(k\in \N^<em>),\<br>    \therefore k \mid N\in \N^</em>,\<br>    又 \because k = \frac{N}{X},\<br>    \therefore \frac{N}{X} \mid N,\<br>    \therefore \exist T = \frac{N}{X}\in [2,\sqrt N],T\mid  N,\<br>    \therefore 假设不成立，原命题成立\<br>    ——lyd<br>$$</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;Number-Theory&quot;&gt;&lt;a href=&quot;#Number-Theory&quot; class=&quot;headerlink&quot; title=&quot;Number Theory&quot;&gt;&lt;/a&gt;&lt;em&gt;Number Theory&lt;/em&gt;&lt;/h1&gt;&lt;hr&gt;
-&lt;h2 id=&quot;质数&quot;&gt;&lt;a 
-      
-    
-    </summary>
-    
-    
-    
-      <category term="Algorithms Learning" scheme="http://kyherg.kk/tags/Algorithms-Learning/"/>
     
   </entry>
   
